@@ -1,0 +1,54 @@
+@import "../scss/colors";
+
+.root {
+  min-width: 86px;
+  padding: 7px 14px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  border-color: $color-stroke-color-control-stroke-default;
+  border-bottom-color: $color-stroke-color-control-stroke-secondary;
+  outline: none;
+  background-color: $color-fill-color-accent-primary;
+  color: $color-fill-color-text-on-accent-primary;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.2s;
+  -webkit-tap-highlight-color: transparent;
+  &.fullWidth {
+    width: 100%;
+  }
+  &.secondary {
+    background-color: $color-fill-color-control-default;
+    color: $color-fill-color-text-primary;
+  }
+  &:hover {
+    background-color: $color-fill-color-accent-secondary;
+    &.secondary {
+      background-color: $color-fill-color-control-secondary;
+    }
+  }
+  &:active {
+    border-color: $color-stroke-color-control-stroke-on-accent-default;
+    border-bottom-color: $color-stroke-color-control-stroke-on-accent-default;
+    background-color: $color-fill-color-accent-tertiary;
+    color: $color-fill-color-text-on-accent-secondary;
+    &.secondary {
+      border-color: $color-stroke-color-control-stroke-default;
+      border-bottom-color: $color-stroke-color-control-stroke-default;
+      color: $color-fill-color-text-secondary;
+    }
+  }
+  &:disabled {
+    border-color: transparent !important;
+    border-bottom-color: transparent !important;
+    background-color: $color-fill-color-accent-disabled !important;
+    color: $color-fill-color-text-on-accent-disabled !important;
+    cursor: not-allowed;
+    &.secondary {
+      border-color: $color-stroke-color-control-stroke-default !important;
+      border-bottom-color: $color-stroke-color-control-stroke-default !important;
+      background-color: $color-fill-color-control-disabled !important;
+      color: $color-fill-color-text-disabled !important;
+    }
+  }
+}

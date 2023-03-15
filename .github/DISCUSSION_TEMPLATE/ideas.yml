@@ -1,0 +1,38 @@
+title: "Sample title"
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to propose a new feature! Please make sure to include as much information as possible.
+  - type: checkboxes
+    attributes:
+      label: Is this feature proposed before?
+      description: Please search to see if your idea is already proposed.
+      options:
+      - label: I have searched the existing proposals and have not found a similar one
+        required: true
+  - type: textarea
+    attributes:
+      label: Motivation
+      description: Describe the motivation behind this idea, and why you think it would be a good addition. Feel free to support your argument with real-world examples. This section should be high-level and not include technical details or implementation ideas.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Proposed Solution
+      description: Describe the solution you'd like. Try to be as specific as possible. Feel free to include code snippets, diagrams, or photos to help explain your idea.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Alternative Solutions
+      description: Describe any alternative solutions you've considered. This is the place to discuss trade-offs you might have thought of.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Competitors
+      description: What other products have this feature? What do you like about how they implement it? What do you dislike about how they implement it?
+    validations:
+      required: false

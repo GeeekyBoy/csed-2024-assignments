@@ -1,0 +1,76 @@
+@import "../scss/colors";
+
+.CheckboxShell {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  width: fit-content;
+  padding: 6px 4px;
+  background-color: transparent;
+  gap: 8px;
+  & > label {
+    width: max-content;
+    margin-bottom: 0;
+    color: $color-fill-color-text-primary;
+    font-size: 0.875rem;
+    cursor: pointer;
+  }
+  &.disabled {
+    & > label {
+      color: $color-fill-color-text-disabled;
+    }
+    .CheckToggle {
+      border-color: $color-stroke-color-control-strong-stroke-disabled;
+      background-color: $color-fill-color-control-alt-disabled;
+      &.checked {
+        border-color: transparent;
+        background-color: $color-fill-color-accent-disabled;
+        color: $color-fill-color-text-on-accent-disabled;
+      }
+    }
+    & * {
+      cursor: not-allowed;
+    }
+  }
+  &.readOnly * {
+    cursor: default;
+  }
+}
+
+.CheckToggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: 1px solid;
+  border-radius: 3px;
+  border-color: $color-stroke-color-control-strong-stroke-default;
+  outline: none;
+  background-color: transparent;
+  background-color: $color-fill-color-control-alt-secondary;
+  cursor: pointer;
+  transition: border-color 0.2s, background-color 0.2s;
+  &:hover {
+    background-color: $color-fill-color-control-alt-tertiary;
+  }
+  &:active {
+    border-color: $color-stroke-color-control-strong-stroke-disabled;
+    background-color: $color-fill-color-control-alt-quarternary;
+  }
+  &.checked {
+    border-color: transparent;
+    background-color: $color-fill-color-accent-primary;
+    color: $color-fill-color-text-on-accent-primary;
+    &:hover {
+      background-color: $color-fill-color-accent-secondary;
+    }
+    &:active {
+      background-color: $color-fill-color-accent-tertiary;
+      color: $color-fill-color-text-on-accent-secondary;
+    }
+  }
+}

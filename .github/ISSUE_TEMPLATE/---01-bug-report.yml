@@ -1,0 +1,59 @@
+name: Bug Report
+description: File a bug report
+title: "Sample title"
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report! Please make sure to include as much information as possible.
+  - type: checkboxes
+    attributes:
+      label: Is there an existing issue for this?
+      description: Please search to see if an issue already exists for the bug you encountered.
+      options:
+      - label: I have searched the existing issues and have not found a similar one
+        required: true
+  - type: textarea
+    attributes:
+      label: Current Behavior
+      description: A concise description of what you're experiencing.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Expected Behavior
+      description: A concise description of what you expected to happen.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Steps To Reproduce
+      description: Steps to reproduce the behavior.
+      placeholder: |
+        1. In this environment...
+        2. Do '...'
+        3. See error...
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Environment
+      description: |
+        examples:
+          - **OS**: Ubuntu 20.04
+          - **Browser**: Chrome 90
+      value: |
+          - **OS**:
+          - **Browser**:
+    validations:
+      required: true
+  - type: checkboxes
+    id: willing-to-pr
+    attributes:
+      label: I would be interested in opening a PR for this issue
+      description: |
+        If you have the time and interest, we always appreciate pull requests!
+      options:
+        - label: I would be interested in opening a PR for this issue
+          required: false

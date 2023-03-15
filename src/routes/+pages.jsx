@@ -14,7 +14,7 @@ import * as styles from "./styles.module.scss";
 
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
-    eval('navigator.serviceWorker.register("/workbox-sw.js");');
+    navigator.serviceWorker.register(new URL("../workbox-sw.js", import.meta.url), { type: "module" });
   });
 }
 

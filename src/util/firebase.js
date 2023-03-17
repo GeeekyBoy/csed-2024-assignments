@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getMessaging, onMessage, getToken } from "firebase/messaging";
-import { initializeFirestore, enableIndexedDbPersistence } from "firebase/firestore";
+import { initializeFirestore, enableMultiTabIndexedDbPersistence } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: process.env["FIREBASE_CLIENT_API_KEY"],
@@ -23,7 +23,7 @@ const db = initializeFirestore(app, {
   cacheSizeBytes: 5e6,
 });
 
-enableIndexedDbPersistence(db).catch((err) => {
+enableMultiTabIndexedDbPersistence(db).catch((err) => {
   if (err.code === "failed-precondition") {
     console.error(
       "Multiple tabs open, persistence can only be enabled in one tab at a a time."

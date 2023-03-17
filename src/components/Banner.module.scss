@@ -1,0 +1,30 @@
+@import "../scss/colors";
+
+.root {
+  width: calc(100% - 40px);
+  margin-top: -10px;
+  padding: 8px 20px;
+  background-color: $color-fill-color-accent-primary;
+  color: $color-fill-color-text-on-accent-primary;
+  font-size: 0.875rem;
+  text-align: center;
+  &.clickable {
+    cursor: pointer;
+  }
+  &.attention {
+    background-color: $color-fill-color-accent-primary;
+    color: $color-fill-color-text-on-accent-primary;
+  }
+  &.success {
+    background-color: $color-fill-color-system-success-background;
+    color: $color-fill-color-system-success;
+  }
+  &.caution {
+    background-color: $color-fill-color-system-caution-background;
+    color: $color-fill-color-system-caution;
+  }
+  &.critical {
+    background-color: $color-fill-color-system-critical-background;
+    color: $color-fill-color-system-critical;
+  }
+}

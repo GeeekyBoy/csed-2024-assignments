@@ -1,3 +1,4 @@
+// @mango
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getMessaging, onMessage, getToken } from "firebase/messaging";
@@ -35,31 +36,48 @@ enableMultiTabIndexedDbPersistence(db).catch((err) => {
   }
 });
 
-getToken(messaging, {
-  vapidKey: process.env["FIREBASE_CLIENT_VAPID_KEY"],
-}).then(async (currentToken) => {
-  if (currentToken) {
-    try {
-      await fetch("/api/subscribe", {
-        method: "POST",
-        body: JSON.stringify({
-          token: currentToken,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      onMessage(
-        messaging,
-        (payload) => {
-          console.log("payload", payload);
-        },
-        (error) => {
-          console.error("Error while subscribing to notifications", error);
+let $notificationsState = Notification?.permission;
+
+const enableNotifications = () => {
+  Notification.requestPermission().then((permission) => {
+    $notificationsState = permission;
+    getToken(messaging, {
+      vapidKey: process.env["FIREBASE_CLIENT_VAPID_KEY"],
+    }).then(async (currentToken) => {
+      if (currentToken) {
+        try {
+          await fetch("/api/subscribe", {
+            method: "POST",
+            body: JSON.stringify({
+              token: currentToken,
+            }),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+          onMessage(
+            messaging,
+            (payload) => {
+              console.log("payload", payload);
+            },
+            (error) => {
+              console.error("Error while subscribing to notifications", error);
+            }
+          );
+        } catch {
+          console.error(`Can't subscribe to notifications`);
         }
-      );
-    } catch {
-      console.error(`Can't subscribe to notifications`);
-    }
-  }
-});
+      }
+    });
+  });
+}
+
+if (Notification.permission === "granted") {
+  enableNotifications();
+}
+
+export {
+  $notificationsState,
+  enableNotifications,
+}
+

@@ -1,5 +1,6 @@
-import "../util/firebase";
+import { enableNotifications, $notificationsState } from "../util/firebase";
 import AssignmentForm from "../components/AssignmentForm";
+import Banner from "../components/Banner";
 import FAB from "../components/FAB";
 import CheckmarkIcon from "jsx:@fluentui/svg-icons/icons/checkmark_24_regular.svg";
 import DeleteIcon from "jsx:@fluentui/svg-icons/icons/delete_24_regular.svg";
@@ -117,6 +118,28 @@ function App() {
         </header>
         <br />
         <div class={styles.viewport}>
+          {$notificationsState === "default" ? (
+            <Banner
+              variant="caution"
+              onClick={enableNotifications}
+              style:position="relative"
+              style:top="-40px"
+              style:left="-30px"
+              style:width="calc(100% + 20px)"
+            >
+              Tap to enable notifications to get notified when an assignment is due!
+            </Banner>
+          ) : $notificationsState === "denied" ? (
+            <Banner
+              variant="critical"
+              style:position="relative"
+              style:top="-40px"
+              style:left="-30px"
+              style:width="calc(100% + 20px)"
+            >
+              Notifications are disabled. Please enable them in your browser settings.
+            </Banner>
+          ) : null}
           <table>
             <tr>
               <th>

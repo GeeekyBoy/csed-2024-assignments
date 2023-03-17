@@ -1,5 +1,11 @@
-importScripts("https://www.gstatic.com/firebasejs/9.17.2/firebase-app-compat.js");
-importScripts( "https://www.gstatic.com/firebasejs/9.17.2/firebase-messaging-compat.js");
+self.addEventListener("notificationclick", function (event) {
+  event.stopImmediatePropagation();
+  event.notification.close();
+  clients.openWindow("https://csed2024assignments.geeekyboy.com/");
+});
+
+importScripts("https://www.gstatic.com/firebasejs/9.18.0/firebase-app-compat.js");
+importScripts("https://www.gstatic.com/firebasejs/9.18.0/firebase-messaging-compat.js");
 
 firebase.initializeApp({
   apiKey: "AIzaSyBRTHLN9HHQjevO4yHIqQeokv3VCzaZHXw",
@@ -13,7 +19,3 @@ firebase.initializeApp({
 });
 
 const messaging = firebase.messaging();
-
-messaging.onBackgroundMessage((payload) => {
-  console.log("payload", payload);
-});

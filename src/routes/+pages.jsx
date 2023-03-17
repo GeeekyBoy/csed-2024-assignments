@@ -85,8 +85,10 @@ function App() {
     }
   }
   const handleEditAssignment = (assignment) => {
-    $activeAssignment = assignment;
-    $isModalActive = true;
+    if ($isEditMode) {
+      $activeAssignment = assignment;
+      $isModalActive = true;
+    }
   }
   return (
     <div class={styles.root}>

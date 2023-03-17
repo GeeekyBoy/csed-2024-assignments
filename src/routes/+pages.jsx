@@ -51,9 +51,23 @@ function App() {
       ];
     }).sort((a, b) => a[3] - b[3]);
   });
-  const handleFabClick = () => {
+  const handleFabClick = async () => {
     if ($routePath !== "/edit") {
-      navigate("/edit");
+      if (!localStorage.getItem("token")) {
+        localStorage.setItem("token", prompt("Please enter your password"));
+      }
+      const res = await fetch(`/api/verify-password`, {
+        method: "GET",
+        headers: {
+          "Authorization": "Bearer " + localStorage.getItem("token"),
+        }
+      });
+      if (res.status === 401) {
+        localStorage.removeItem("token");
+        alert("Invalid password");
+      } else {
+        navigate("/edit");
+      }
     } else {
       $activeAssignment = [];
       $isModalActive = true;

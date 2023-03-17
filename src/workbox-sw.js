@@ -1,8 +1,8 @@
-import { skipWaiting, clientsClaim } from "workbox-core";
+import { clientsClaim } from "workbox-core";
 import { registerRoute } from "workbox-routing";
 import { NetworkFirst } from "workbox-strategies";
 
-skipWaiting();
+self.skipWaiting();
 clientsClaim();
 
 registerRoute(

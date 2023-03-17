@@ -40,9 +40,9 @@ export const dateToString = (date, showTime, beforeSection) => {
   return (
     days[day] +
     " " +
-    month +
-    "/" +
     dayOfMonth +
+    "/" +
+    month +
     (showTime ? " @ " + strTime : "") +
     (beforeSection ? " before section" : "")
   );

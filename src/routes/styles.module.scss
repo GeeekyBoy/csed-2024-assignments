@@ -89,6 +89,16 @@
   }
 }
 
+.filters {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 12px;
+}
+
 .StatusToggle {
   position: absolute;
   top: 50%;

@@ -2,6 +2,7 @@ import { enableNotifications, $notificationsState } from "../util/firebase";
 import AssignmentForm from "../components/AssignmentForm";
 import Banner from "../components/Banner";
 import FAB from "../components/FAB";
+import Checkbox from "../components/Checkbox";
 import CheckmarkIcon from "jsx:@fluentui/svg-icons/icons/checkmark_24_regular.svg";
 import DeleteIcon from "jsx:@fluentui/svg-icons/icons/delete_24_regular.svg";
 import AddIcon from "jsx:@fluentui/svg-icons/icons/add_24_regular.svg";
@@ -23,7 +24,10 @@ function App() {
   let $activeAssignment = [];
   let $pending = pendingAssignments.load();
   let $finished = finishedAssignments.load();
-  let $isEditMode;
+  let $isEditMode = false;
+  let $showTodo = true;
+  let $showPending = true;
+  let $showFinished = true;
   let $data = [];
   const teamsCodes = [
     ["Graphics", "n5oc9r2"],
@@ -164,6 +168,11 @@ function App() {
               Notifications are disabled. Please enable them in your browser settings.
             </Banner>
           ) : null}
+          <div className={styles.filters}>
+            <Checkbox label="Todo" $value={$showTodo} />
+            <Checkbox label="Pending" $value={$showPending} />
+            <Checkbox label="Finished" $value={$showFinished} />
+          </div>
           <table>
             <tr>
               <th>
@@ -174,51 +183,55 @@ function App() {
               </th>
             </tr>
             {$data.map((item) => (
-              <tr onClick={() => handleEditAssignment(item)}>
-                <td
-                  class={!$isEditMode && $pending.includes(item[0]) && styles.pending}
-                  class={!$isEditMode && $finished.includes(item[0]) && styles.done}
-                >
-                  {item[1]} → {item[4] ? (
-                    <a href={item[4]} target="_blank" onClick={(e) => e.stopPropagation()}>
-                      {item[2]}
-                    </a>
-                  ) : (
-                    item[2]
-                  )}
-                  {$isEditMode ? (
-                    <button
-                      class={styles.DeleteButton}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleDelete(item[0], item[1], item[2]);
-                      }}
-                    >
-                      <DeleteIcon style:fill="#ff0000" style:width={24} style:height={24} />
-                    </button>
-                  ) : (
-                    <button
-                      class={styles.StatusToggle}
-                      class={$pending.includes(item[0]) && styles.pending}
-                      class={$finished.includes(item[0]) && styles.done}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleChangeStatus(item[0]);
-                      }}
-                    >
-                      {$finished.includes(item[0]) && (
-                        <CheckmarkIcon style:fill="#ffffff" style:width={24} style:height={24} />
-                      )}
-                    </button>
-                  )}
-                </td>
-                <td
-                  class={!$isEditMode && $pending.includes(item[0]) && styles.pending}
-                  class={!$isEditMode && $finished.includes(item[0]) && styles.done}
-                >
-                  {dateUtils.dateToString(new Date(item[3]), item[5], item[6])}
-                </td>
-              </tr>
+              (($showTodo && !$pending.includes(item[0]) && !$finished.includes(item[0])) ||
+              ($showPending && $pending.includes(item[0])) ||
+              ($showFinished && $finished.includes(item[0]))) && (
+                <tr onClick={() => handleEditAssignment(item)}>
+                  <td
+                    class={!$isEditMode && $pending.includes(item[0]) && styles.pending}
+                    class={!$isEditMode && $finished.includes(item[0]) && styles.done}
+                  >
+                    {item[1]} → {item[4] ? (
+                      <a href={item[4]} target="_blank" onClick={(e) => e.stopPropagation()}>
+                        {item[2]}
+                      </a>
+                    ) : (
+                      item[2]
+                    )}
+                    {$isEditMode ? (
+                      <button
+                        class={styles.DeleteButton}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleDelete(item[0], item[1], item[2]);
+                        }}
+                      >
+                        <DeleteIcon style:fill="#ff0000" style:width={24} style:height={24} />
+                      </button>
+                    ) : (
+                      <button
+                        class={styles.StatusToggle}
+                        class={$pending.includes(item[0]) && styles.pending}
+                        class={$finished.includes(item[0]) && styles.done}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleChangeStatus(item[0]);
+                        }}
+                      >
+                        {$finished.includes(item[0]) && (
+                          <CheckmarkIcon style:fill="#ffffff" style:width={24} style:height={24} />
+                        )}
+                      </button>
+                    )}
+                  </td>
+                  <td
+                    class={!$isEditMode && $pending.includes(item[0]) && styles.pending}
+                    class={!$isEditMode && $finished.includes(item[0]) && styles.done}
+                  >
+                    {dateUtils.dateToString(new Date(item[3]), item[5], item[6])}
+                  </td>
+                </tr>
+              )
             ))}
           </table>
           <br />

@@ -7,7 +7,6 @@ import DeleteIcon from "jsx:@fluentui/svg-icons/icons/delete_24_regular.svg";
 import AddIcon from "jsx:@fluentui/svg-icons/icons/add_24_regular.svg";
 import EditIcon from "jsx:@fluentui/svg-icons/icons/edit_24_regular.svg";
 import { getFirestore, onSnapshot, collection } from "firebase/firestore";
-import { $routePath, navigate } from "@mango-js/router";
 import * as dateUtils from "../util/dateUtils.js";
 import * as pendingAssignments from "../util/pendingAssignments.js";
 import * as finishedAssignments from "../util/finishedAssignments.js";
@@ -33,9 +32,6 @@ function App() {
     ["Architecture", "mr064u5"],
   ];
   const driveLink = "https://drive.google.com/drive/folders/1QrC56oFyDboBWRCpjoFI7PedFU3ffilf";
-  $createIEffect(() => {
-    $isEditMode = $routePath === "/edit";
-  });
   const db = getFirestore();
   onSnapshot(collection(db, "assignments"), (snapshot) => {
     $data = snapshot.docs.map((item) => {
@@ -52,7 +48,7 @@ function App() {
     }).sort((a, b) => a[3] - b[3]);
   });
   const handleFabClick = async () => {
-    if ($routePath !== "/edit") {
+    if (!$isEditMode) {
       if (!localStorage.getItem("token")) {
         localStorage.setItem("token", prompt("Please enter your password"));
       }
@@ -66,12 +62,15 @@ function App() {
         localStorage.removeItem("token");
         alert("Invalid password");
       } else {
-        navigate("/edit");
+        $isEditMode = true;
       }
     } else {
       $activeAssignment = [];
       $isModalActive = true;
     }
+  }
+  const handleExitEditMode = () => {
+    $isEditMode = false;
   }
   const handleChangeStatus = (id) => {
     if ($pending.includes(id)) {
@@ -132,7 +131,18 @@ function App() {
         </header>
         <br />
         <div class={styles.viewport}>
-          {$notificationsState === "default" ? (
+          {$isEditMode ? (
+            <Banner
+              variant="critical"
+              onClick={handleExitEditMode}
+              style:position="relative"
+              style:top="-40px"
+              style:left="-30px"
+              style:width="calc(100% + 20px)"
+            >
+              Tap to exit edit mode!
+            </Banner>
+          ) : $notificationsState === "default" ? (
             <Banner
               variant="caution"
               onClick={enableNotifications}

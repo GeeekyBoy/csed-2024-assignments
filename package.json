@@ -14,7 +14,6 @@
   },
   "devDependencies": {
     "@mango-js/scripts": "^1.0.0-alpha.11",
-    "@mango-js/router": "^1.0.0-alpha.11",
     "@mango-js/types": "^1.0.0-alpha.11",
     "process": "^0.11.10"
   },

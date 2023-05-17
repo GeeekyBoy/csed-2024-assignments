@@ -13,14 +13,14 @@
     "serve": "mango-scripts serve"
   },
   "devDependencies": {
-    "@mango-js/scripts": "^1.0.0-alpha.11",
-    "@mango-js/types": "^1.0.0-alpha.11",
+    "@mango-js/scripts": "^1.0.0-alpha.13",
+    "@mango-js/types": "^1.0.0-alpha.13",
     "process": "^0.11.10"
   },
   "dependencies": {
-    "firebase": "^9.18.0",
-    "firebase-admin": "^11.5.0",
-    "@fluentui/svg-icons": "^1.1.196",
+    "firebase": "^9.22.0",
+    "firebase-admin": "^11.8.0",
+    "@fluentui/svg-icons": "^1.1.198",
     "workbox-core": "^6.5.4",
     "workbox-routing": "^6.5.4",
     "workbox-strategies": "^6.5.4",

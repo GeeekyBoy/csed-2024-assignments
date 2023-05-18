@@ -31,10 +31,10 @@ function Modal({
           <div>{children}</div>
         </div>
         <div class={styles.modalFooter}>
-          <Button onClick={handleCancel} secondary fullWidth>
+          <Button label="cancel" onClick={handleCancel} secondary fullWidth>
             {cancelLabel}
           </Button>
-          <Button onClick={handleSubmit} disabled={disabled} fullWidth>
+          <Button label="submit" onClick={handleSubmit} disabled={disabled} fullWidth>
             {submitLabel}
           </Button>
         </div>

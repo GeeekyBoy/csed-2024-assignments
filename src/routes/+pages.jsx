@@ -28,6 +28,7 @@ function App() {
   let $showTodo = true;
   let $showPending = true;
   let $showFinished = true;
+  let $loading = true;
   let $data = [];
   const teamsCodes = [
     ["Graphics", "n5oc9r2"],
@@ -50,6 +51,7 @@ function App() {
         data.beforeSection
       ];
     }).sort((a, b) => a[3] - b[3]);
+    $loading = false;
   });
   const handleFabClick = async () => {
     if (!$isEditMode) {
@@ -123,6 +125,8 @@ function App() {
             CSED 2024 Assignments
             <a href="https://github.com/GeeekyBoy/csed-2024-assignments" target="_blank">
               <img
+                width={76}
+                height={20}
                 alt="GitHub stars"
                 src="https://img.shields.io/github/stars/GeeekyBoy/csed-2024-assignments.svg?style=social&label=Star"
               />
@@ -168,6 +172,10 @@ function App() {
               Notifications are disabled. Please enable them in your browser settings.
             </Banner>
           ) : null}
+          {$loading ? (
+            <p>Loading...</p>
+          ) : (
+            <div>
           <div className={styles.filters}>
             <Checkbox label="Todo" $value={$showTodo} />
             <Checkbox label="Pending" $value={$showPending} />
@@ -201,6 +209,7 @@ function App() {
                     {$isEditMode ? (
                       <button
                         class={styles.DeleteButton}
+                        aria-label="delete assignment"
                         onClick={(e) => {
                           e.stopPropagation();
                           handleDelete(item[0], item[1], item[2]);
@@ -213,6 +222,7 @@ function App() {
                         class={styles.StatusToggle}
                         class={$pending.includes(item[0]) && styles.pending}
                         class={$finished.includes(item[0]) && styles.done}
+                        aria-label="toggle assignment status"
                         onClick={(e) => {
                           e.stopPropagation();
                           handleChangeStatus(item[0]);
@@ -256,6 +266,8 @@ function App() {
             </b>
           </div>
         </div>
+          )}
+        </div>
         <footer>
           <p>
             Made with ❤️ by <a href="https://github.com/GeeekyBoy" target="_blank">GeeekyBoy</a> in Egypt
@@ -264,7 +276,7 @@ function App() {
           </p>
         </footer>
       </center>
-      <FAB onClick={handleFabClick}>
+      <FAB label={$isEditMode ? "add new assignment" : "enter edit mode"} onClick={handleFabClick}>
         {$isEditMode ? (
           <AddIcon style:fill="#ffffff" style:width={24} style:height={24} />
         ) : (

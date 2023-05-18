@@ -2,6 +2,7 @@ import * as styles from "./Button.module.scss";
 
 function Button({
   children,
+  label,
   fullWidth = false,
   secondary = false,
   disabled = false,
@@ -17,6 +18,7 @@ function Button({
       class={styles.root}
       class={fullWidth && styles.fullWidth}
       class={secondary && styles.secondary}
+      aria-label={label}
       onClick={handleClick}
       disabled={disabled}
     >

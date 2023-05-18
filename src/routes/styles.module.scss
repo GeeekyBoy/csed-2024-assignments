@@ -26,6 +26,7 @@
   overflow: auto;
 
   table {
+    display: table;
     width: 100%;
     max-width: 600px;
     border-collapse: collapse;
@@ -35,9 +36,7 @@
     border: 0;
     font-size: 100%;
     font: inherit;
-    vertical-align: baseline;
     background: transparent;
-    border: 1px solid #000000;
     border-collapse: collapse;
     border-spacing: 0;
     caption-side: top;

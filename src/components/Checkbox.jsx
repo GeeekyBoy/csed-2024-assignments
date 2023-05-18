@@ -21,6 +21,7 @@ function Checkbox({
       <button
         class={styles.CheckToggle}
         class={$value && styles.checked}
+        aria-label={label}
         onClick={handleToggle}
       >
         {$value && <CheckmarkIcon style:fill="currentColor" style:width={14} style:height={14} />}

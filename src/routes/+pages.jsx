@@ -1,4 +1,5 @@
 import { enableNotifications, $notificationsState } from "../util/firebase";
+import confetti from 'canvas-confetti';
 import AssignmentForm from "../components/AssignmentForm";
 import Banner from "../components/Banner";
 import FAB from "../components/FAB";
@@ -30,6 +31,7 @@ function App() {
   let $showFinished = true;
   let $loading = true;
   let $data = [];
+  let $tadaCanvas = null;
   const teamsCodes = [
     ["Graphics", "n5oc9r2"],
     ["Critical thinking", "6ek7ulb"],
@@ -110,6 +112,12 @@ function App() {
       $isModalActive = true;
     }
   }
+  confetti({
+    particleCount: 400,
+    spread: 100,
+    resize: true,
+    origin: { y: 0.6 }
+  });
   return (
     <div class={styles.root}>
       <head>

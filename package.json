@@ -13,8 +13,8 @@
     "serve": "mango-scripts serve"
   },
   "devDependencies": {
-    "@mango-js/scripts": "^1.0.0-alpha.18",
-    "@mango-js/types": "^1.0.0-alpha.18",
+    "@mango-js/scripts": "^1.0.0-alpha.19",
+    "@mango-js/types": "^1.0.0-alpha.19",
     "process": "^0.11.10"
   },
   "dependencies": {

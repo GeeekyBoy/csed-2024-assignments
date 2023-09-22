@@ -13,14 +13,14 @@
     "serve": "mango-scripts serve"
   },
   "devDependencies": {
-    "@mango-js/scripts": "^1.0.0-alpha.19",
-    "@mango-js/types": "^1.0.0-alpha.19",
+    "@mango-js/scripts": "^1.0.0-alpha.26",
+    "@mango-js/types": "^1.0.0-alpha.26",
     "process": "^0.11.10"
   },
   "dependencies": {
-    "firebase": "^9.23.0",
-    "firebase-admin": "^11.9.0",
-    "@fluentui/svg-icons": "^1.1.198",
+    "firebase": "^10.4.0",
+    "firebase-admin": "^11.10.1",
+    "@fluentui/svg-icons": "^1.1.217",
     "canvas-confetti": "^1.6.0",
     "workbox-core": "^7.0.0",
     "workbox-routing": "^7.0.0",
@@ -32,7 +32,7 @@
   },
   "config": {
     "publicUrl": "/",
-    "browsers": "> 0%",
+    "browsers": "defaults",
     "cdn": "self",
     "devServer": {
       "port": 4000

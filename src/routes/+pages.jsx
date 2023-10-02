@@ -33,10 +33,7 @@ function App() {
   let $data = [];
   let $tadaCanvas = null;
   const teamsCodes = [
-    ["Graphics", "n5oc9r2"],
-    ["Critical thinking", "6ek7ulb"],
-    ["Embedded Systems", "ljtiab1"],
-    ["Architecture", "mr064u5"],
+    ["Bioinformatics", "i1bjdy5"],
   ];
   const driveLink = "https://drive.google.com/drive/folders/1QrC56oFyDboBWRCpjoFI7PedFU3ffilf";
   const db = getFirestore();

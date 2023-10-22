@@ -31,9 +31,11 @@ function App() {
   let $showFinished = true;
   let $loading = true;
   let $data = [];
-  let $tadaCanvas = null;
   const teamsCodes = [
     ["Bioinformatics", "i1bjdy5"],
+    ["Parallel Computing", "wnswzh1"],
+    ["Computer Vision", "pt1tarv"],
+    ["Modern Issues", "vpk2ats"],
   ];
   const driveLink = "https://drive.google.com/drive/folders/1QrC56oFyDboBWRCpjoFI7PedFU3ffilf";
   const db = getFirestore();

@@ -13,19 +13,19 @@
     "serve": "mango-scripts serve"
   },
   "devDependencies": {
-    "@mango-js/scripts": "^1.0.0-alpha.27",
-    "@mango-js/types": "^1.0.0-alpha.27",
+    "@mango-js/scripts": "^1.0.0-alpha.29",
+    "@mango-js/types": "^1.0.0-alpha.29",
     "process": "^0.11.10"
   },
   "dependencies": {
-    "firebase": "^10.5.0",
-    "firebase-admin": "^11.11.0",
-    "@fluentui/svg-icons": "^1.1.221",
-    "canvas-confetti": "^1.9.0",
+    "firebase": "^10.7.2",
+    "firebase-admin": "^12.0.0",
+    "@fluentui/svg-icons": "^1.1.225",
+    "canvas-confetti": "^1.9.2",
     "workbox-core": "^7.0.0",
     "workbox-routing": "^7.0.0",
     "workbox-strategies": "^7.0.0",
-    "dotenv": "^16.3.1"
+    "dotenv": "^16.3.2"
   },
   "alias": {
     "process": "process/browser.js"

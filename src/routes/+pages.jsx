@@ -32,10 +32,9 @@ function App() {
   let $loading = true;
   let $data = [];
   const teamsCodes = [
-    ["Bioinformatics", "i1bjdy5"],
-    ["Parallel Computing", "wnswzh1"],
-    ["Computer Vision", "pt1tarv"],
-    ["Modern Issues", "vpk2ats"],
+    ["Designing Data-Intensive Apps", "g9kqa14"],
+    ["Security", "64daw8i"],
+    ["Multimedia", "hfe12ez"],
   ];
   const driveLink = "https://drive.google.com/drive/folders/1QrC56oFyDboBWRCpjoFI7PedFU3ffilf";
   const db = getFirestore();

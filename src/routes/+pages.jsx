@@ -32,7 +32,7 @@ function App() {
   let $loading = true;
   let $data = [];
   const teamsCodes = [
-    ["Designing Data-Intensive Apps", "g9kqa14"],
+    ["Data-Intensive", "g9kqa14"],
     ["Security", "64daw8i"],
     ["Multimedia", "hfe12ez"],
   ];
